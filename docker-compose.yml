@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  upshift-bot:
+    build: .
+    container_name: upshift-telegram-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - UPSHIFT_API_URL=${UPSHIFT_API_URL}
+      - WALLET_ADDRESSES=${WALLET_ADDRESSES}
+      - AUTO_CLAIM_SCHEDULE=${AUTO_CLAIM_SCHEDULE}
+      - OWNER_ID=${OWNER_ID}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - upshift-network
+    healthcheck:
+      test: ["CMD", "ps", "aux"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  upshift-network:
+    driver: bridge

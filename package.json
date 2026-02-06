@@ -1,0 +1,20 @@
+{
+  "name": "upshift-telegram-bot",
+  "version": "1.0.0",
+  "description": "Auto claim daily Upshift Finance rewards with Telegram bot menu",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": ["telegram", "bot", "upshift", "auto-claim"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^4.14.1",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.2"
+  }
+}
